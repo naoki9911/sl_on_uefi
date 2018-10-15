@@ -10,6 +10,7 @@
 #include  <Library/MemoryAllocationLib.h>
 #include  <Library/BaseMemoryLib.h>
 #include "graphic.h"
+#include "font.h"
 
 EFI_STATUS
 EFIAPI
@@ -19,6 +20,18 @@ UefiMain (
   )
 {
   Print(L"Hello World!");
-  asm("hlt");
-  while(1){};
+  struct graphic_config conf;
+//  Print(L"Getting Graphic Node\n");
+  GetGraphicMode(ImageHandle,&conf);
+
+  graphic_draw_white(10,10,&conf);
+  graphic_draw_white(11,10,&conf);
+  graphic_draw_white(12,10,&conf);
+  graphic_draw_white(13,10,&conf);
+  for(UINTN i=0;i<48;i++){
+    font_render(20+i*15,20,0x21+i,&conf);
+  }
+  while(1){
+    asm("hlt");
+  };
 }

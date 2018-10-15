@@ -19,7 +19,7 @@ PLATFORM_NAME = sl_on_uefi
 PLATFORM_GUID = a1f17644-f20b-4de6-865d-863f43fafebd
 PLATFORM_VERSION = 0.1
 PLATFORM_RELATIVE_DIR = sl_on_uefi
-PLATFORM_DIR = /home/naoki/edk2/sl_on_uefi
+PLATFORM_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi
 PLATFORM_OUTPUT_DIR = sl_on_uefi/build
 
 #
@@ -35,7 +35,7 @@ MODULE_FILE_BASE_NAME = BasePrintLib
 BASE_NAME = $(MODULE_NAME)
 MODULE_RELATIVE_DIR = MdePkg/Library/BasePrintLib
 PACKAGE_RELATIVE_DIR = Library/BasePrintLib
-MODULE_DIR = /home/naoki/edk2/MdePkg/Library/BasePrintLib
+MODULE_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/MdePkg/Library/BasePrintLib
 FFS_OUTPUT_DIR = 
 
 MODULE_ENTRY_POINT = _ModuleEntryPoint
@@ -60,13 +60,13 @@ TARGET = DEBUG
 #
 # Build Directory Macro Definition
 #
-# PLATFORM_BUILD_DIR = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5
-BUILD_DIR = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5
+# PLATFORM_BUILD_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5
+BUILD_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5
 BIN_DIR = $(BUILD_DIR)/X64
 LIB_DIR = $(BIN_DIR)
-MODULE_BUILD_DIR = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib
-OUTPUT_DIR = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib/OUTPUT
-DEBUG_DIR = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib/DEBUG
+MODULE_BUILD_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib
+OUTPUT_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib/OUTPUT
+DEBUG_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib/DEBUG
 DEST_DIR_OUTPUT = $(OUTPUT_DIR)
 DEST_DIR_DEBUG = $(DEBUG_DIR)
 
@@ -207,17 +207,17 @@ INC =  \
     -I$(WORKSPACE)/MdePkg/Include \
     -I$(WORKSPACE)/MdePkg/Include/X64
 
-OBJECT_FILES_LIST = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib/OUTPUT/object_files.lst
+OBJECT_FILES_LIST = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib/OUTPUT/object_files.lst
 
 
-COMMON_DEPS = $(WORKSPACE)/MdePkg/Include/Base.h \
-              $(WORKSPACE)/MdePkg/Include/Library/DebugLib.h \
-              $(WORKSPACE)/MdePkg/Library/BasePrintLib/PrintLibInternal.h \
+COMMON_DEPS = $(WORKSPACE)/MdePkg/Include/X64/ProcessorBind.h \
               $(DEBUG_DIR)/AutoGen.h \
               $(WORKSPACE)/MdePkg/Include/Library/BaseLib.h \
-              $(WORKSPACE)/MdePkg/Include/Library/PcdLib.h \
-              $(WORKSPACE)/MdePkg/Include/X64/ProcessorBind.h \
+              $(WORKSPACE)/MdePkg/Include/Library/DebugLib.h \
+              $(WORKSPACE)/MdePkg/Library/BasePrintLib/PrintLibInternal.h \
               $(WORKSPACE)/MdePkg/Include/Library/PrintLib.h \
+              $(WORKSPACE)/MdePkg/Include/Base.h \
+              $(WORKSPACE)/MdePkg/Include/Library/PcdLib.h \
               
 
 #
@@ -227,7 +227,7 @@ FORCE_REBUILD = force_build
 INIT_TARGET = init
 PCH_TARGET =
 BC_TARGET = 
-CODA_TARGET = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib/OUTPUT/BasePrintLib.lib \
+CODA_TARGET = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib/OUTPUT/BasePrintLib.lib \
               
 
 #
@@ -301,17 +301,17 @@ gen_fds:
 #
 $(OUTPUT_DIR)/BasePrintLib.lib : $(OBJECT_FILES)
 $(OUTPUT_DIR)/BasePrintLib.lib : $(OBJECT_FILES_LIST)
-	"$(SLINK)" cr /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib/OUTPUT/BasePrintLib.lib $(SLINK_FLAGS) @$(OBJECT_FILES_LIST)
+	"$(SLINK)" cr /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib/OUTPUT/BasePrintLib.lib $(SLINK_FLAGS) @$(OBJECT_FILES_LIST)
 
 $(OUTPUT_DIR)/PrintLibInternal.obj : $(MAKE_FILE)
 $(OUTPUT_DIR)/PrintLibInternal.obj : $(COMMON_DEPS)
 $(OUTPUT_DIR)/PrintLibInternal.obj : $(WORKSPACE)/MdePkg/Library/BasePrintLib/PrintLibInternal.c
-	"$(CC)" $(CC_FLAGS) -c -o /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib/OUTPUT/./PrintLibInternal.obj $(INC) /home/naoki/edk2/MdePkg/Library/BasePrintLib/PrintLibInternal.c
+	"$(CC)" $(CC_FLAGS) -c -o /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib/OUTPUT/./PrintLibInternal.obj $(INC) /home/naoki/Nextcloud/sl_on_uefi/edk2/MdePkg/Library/BasePrintLib/PrintLibInternal.c
 
 $(OUTPUT_DIR)/PrintLib.obj : $(MAKE_FILE)
 $(OUTPUT_DIR)/PrintLib.obj : $(COMMON_DEPS)
 $(OUTPUT_DIR)/PrintLib.obj : $(WORKSPACE)/MdePkg/Library/BasePrintLib/PrintLib.c
-	"$(CC)" $(CC_FLAGS) -c -o /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib/OUTPUT/./PrintLib.obj $(INC) /home/naoki/edk2/MdePkg/Library/BasePrintLib/PrintLib.c
+	"$(CC)" $(CC_FLAGS) -c -o /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePrintLib/BasePrintLib/OUTPUT/./PrintLib.obj $(INC) /home/naoki/Nextcloud/sl_on_uefi/edk2/MdePkg/Library/BasePrintLib/PrintLib.c
 
 
 

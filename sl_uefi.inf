@@ -9,6 +9,7 @@
 [Sources]
   sl_uefi.c
   graphic.c
+  font.c
 
 [Packages]
   MdePkg/MdePkg.dec

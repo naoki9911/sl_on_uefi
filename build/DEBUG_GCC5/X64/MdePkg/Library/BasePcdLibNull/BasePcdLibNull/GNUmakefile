@@ -19,7 +19,7 @@ PLATFORM_NAME = sl_on_uefi
 PLATFORM_GUID = a1f17644-f20b-4de6-865d-863f43fafebd
 PLATFORM_VERSION = 0.1
 PLATFORM_RELATIVE_DIR = sl_on_uefi
-PLATFORM_DIR = /home/naoki/edk2/sl_on_uefi
+PLATFORM_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi
 PLATFORM_OUTPUT_DIR = sl_on_uefi/build
 
 #
@@ -35,7 +35,7 @@ MODULE_FILE_BASE_NAME = BasePcdLibNull
 BASE_NAME = $(MODULE_NAME)
 MODULE_RELATIVE_DIR = MdePkg/Library/BasePcdLibNull
 PACKAGE_RELATIVE_DIR = Library/BasePcdLibNull
-MODULE_DIR = /home/naoki/edk2/MdePkg/Library/BasePcdLibNull
+MODULE_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/MdePkg/Library/BasePcdLibNull
 FFS_OUTPUT_DIR = 
 
 MODULE_ENTRY_POINT = _ModuleEntryPoint
@@ -60,13 +60,13 @@ TARGET = DEBUG
 #
 # Build Directory Macro Definition
 #
-# PLATFORM_BUILD_DIR = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5
-BUILD_DIR = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5
+# PLATFORM_BUILD_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5
+BUILD_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5
 BIN_DIR = $(BUILD_DIR)/X64
 LIB_DIR = $(BIN_DIR)
-MODULE_BUILD_DIR = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePcdLibNull/BasePcdLibNull
-OUTPUT_DIR = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/OUTPUT
-DEBUG_DIR = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/DEBUG
+MODULE_BUILD_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePcdLibNull/BasePcdLibNull
+OUTPUT_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/OUTPUT
+DEBUG_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/DEBUG
 DEST_DIR_OUTPUT = $(OUTPUT_DIR)
 DEST_DIR_DEBUG = $(DEBUG_DIR)
 
@@ -206,15 +206,15 @@ INC =  \
     -I$(WORKSPACE)/MdePkg/Include \
     -I$(WORKSPACE)/MdePkg/Include/X64
 
-OBJECT_FILES_LIST = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/OUTPUT/object_files.lst
+OBJECT_FILES_LIST = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/OUTPUT/object_files.lst
 
 
-COMMON_DEPS = $(WORKSPACE)/MdePkg/Include/Base.h \
-              $(WORKSPACE)/MdePkg/Include/Library/PcdLib.h \
-              $(WORKSPACE)/MdePkg/Include/X64/ProcessorBind.h \
-              $(WORKSPACE)/MdePkg/Include/Library/BaseMemoryLib.h \
+COMMON_DEPS = $(WORKSPACE)/MdePkg/Include/X64/ProcessorBind.h \
               $(WORKSPACE)/MdePkg/Include/Library/DebugLib.h \
               $(DEBUG_DIR)/AutoGen.h \
+              $(WORKSPACE)/MdePkg/Include/Library/PcdLib.h \
+              $(WORKSPACE)/MdePkg/Include/Base.h \
+              $(WORKSPACE)/MdePkg/Include/Library/BaseMemoryLib.h \
               
 
 #
@@ -224,7 +224,7 @@ FORCE_REBUILD = force_build
 INIT_TARGET = init
 PCH_TARGET =
 BC_TARGET = 
-CODA_TARGET = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/OUTPUT/BasePcdLibNull.lib \
+CODA_TARGET = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/OUTPUT/BasePcdLibNull.lib \
               
 
 #
@@ -298,12 +298,12 @@ gen_fds:
 #
 $(OUTPUT_DIR)/BasePcdLibNull.lib : $(OBJECT_FILES)
 $(OUTPUT_DIR)/BasePcdLibNull.lib : $(OBJECT_FILES_LIST)
-	"$(SLINK)" cr /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/OUTPUT/BasePcdLibNull.lib $(SLINK_FLAGS) @$(OBJECT_FILES_LIST)
+	"$(SLINK)" cr /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/OUTPUT/BasePcdLibNull.lib $(SLINK_FLAGS) @$(OBJECT_FILES_LIST)
 
 $(OUTPUT_DIR)/PcdLib.obj : $(MAKE_FILE)
 $(OUTPUT_DIR)/PcdLib.obj : $(COMMON_DEPS)
 $(OUTPUT_DIR)/PcdLib.obj : $(WORKSPACE)/MdePkg/Library/BasePcdLibNull/PcdLib.c
-	"$(CC)" $(CC_FLAGS) -c -o /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/OUTPUT/./PcdLib.obj $(INC) /home/naoki/edk2/MdePkg/Library/BasePcdLibNull/PcdLib.c
+	"$(CC)" $(CC_FLAGS) -c -o /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/MdePkg/Library/BasePcdLibNull/BasePcdLibNull/OUTPUT/./PcdLib.obj $(INC) /home/naoki/Nextcloud/sl_on_uefi/edk2/MdePkg/Library/BasePcdLibNull/PcdLib.c
 
 
 

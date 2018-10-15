@@ -41,7 +41,9 @@ EFI_STATUS GetGraphicMode(
     IN EFI_HANDLE ImageHandle,
     OUT struct graphic_config *graphic_config
     );
- EFI_STATUS DrawBMP(CHAR16 *file_name,struct graphic_config *graphic_config);
- void graphic_draw_pixel(UINTN x,UINTN y,UINTN bmp_addr,struct graphic_config *graphic_config);
+EFI_STATUS DrawBMP(CHAR16 *file_name,struct graphic_config *graphic_config);
+void graphic_draw_pixel(UINTN x,UINTN y,UINTN bmp_addr,struct graphic_config *graphic_config);
+void graphic_draw_pixel_array(UINTN x,UINTN y,UINT8 *array,struct graphic_config *graphic_config);
+void graphic_draw_white(UINTN x,UINTN y,struct graphic_config *graphic_config);
 #endif
 

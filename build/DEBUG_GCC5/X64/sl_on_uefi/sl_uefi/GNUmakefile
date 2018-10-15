@@ -19,7 +19,7 @@ PLATFORM_NAME = sl_on_uefi
 PLATFORM_GUID = a1f17644-f20b-4de6-865d-863f43fafebd
 PLATFORM_VERSION = 0.1
 PLATFORM_RELATIVE_DIR = sl_on_uefi
-PLATFORM_DIR = /home/naoki/edk2/sl_on_uefi
+PLATFORM_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi
 PLATFORM_OUTPUT_DIR = sl_on_uefi/build
 
 #
@@ -35,7 +35,7 @@ MODULE_FILE_BASE_NAME = sl_uefi
 BASE_NAME = $(MODULE_NAME)
 MODULE_RELATIVE_DIR = sl_on_uefi
 PACKAGE_RELATIVE_DIR = sl_on_uefi
-MODULE_DIR = /home/naoki/edk2/sl_on_uefi
+MODULE_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi
 FFS_OUTPUT_DIR = 
 
 MODULE_ENTRY_POINT = UefiMain
@@ -59,13 +59,13 @@ TARGET = DEBUG
 #
 # Build Directory Macro Definition
 #
-# PLATFORM_BUILD_DIR = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5
-BUILD_DIR = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5
+# PLATFORM_BUILD_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5
+BUILD_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5
 BIN_DIR = $(BUILD_DIR)/X64
 LIB_DIR = $(BIN_DIR)
-MODULE_BUILD_DIR = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi
-OUTPUT_DIR = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/OUTPUT
-DEBUG_DIR = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG
+MODULE_BUILD_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi
+OUTPUT_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/OUTPUT
+DEBUG_DIR = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG
 DEST_DIR_OUTPUT = $(OUTPUT_DIR)
 DEST_DIR_DEBUG = $(DEBUG_DIR)
 
@@ -198,6 +198,7 @@ MAKE_FILE = $(MODULE_BUILD_DIR)/GNUmakefile
 OBJECT_FILES =  \
     $(OUTPUT_DIR)/sl_uefi.obj \
     $(OUTPUT_DIR)/graphic.obj \
+    $(OUTPUT_DIR)/font.obj \
     $(OUTPUT_DIR)/AutoGen.obj
 
 STATIC_LIBRARY_FILES =  \
@@ -222,55 +223,47 @@ INC =  \
     -I$(WORKSPACE)/MdePkg/Include \
     -I$(WORKSPACE)/MdePkg/Include/X64
 
-OBJECT_FILES_LIST = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/OUTPUT/object_files.lst
-STATIC_LIBRARY_FILES_LIST = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/OUTPUT/static_library_files.lst
+OBJECT_FILES_LIST = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/OUTPUT/object_files.lst
+STATIC_LIBRARY_FILES_LIST = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/OUTPUT/static_library_files.lst
 
 
-COMMON_DEPS = $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi50.h \
-              $(WORKSPACE)/MdePkg/Include/Uefi/UefiMultiPhase.h \
-              $(WORKSPACE)/MdePkg/Include/Library/UefiLib.h \
-              $(WORKSPACE)/MdePkg/Include/Protocol/SimpleTextOut.h \
-              $(WORKSPACE)/MdePkg/Include/Uefi/UefiBaseType.h \
-              $(WORKSPACE)/MdePkg/Include/Library/UefiBootServicesTableLib.h \
-              $(WORKSPACE)/MdePkg/Include/Protocol/SimpleTextInEx.h \
-              $(WORKSPACE)/MdePkg/Include/Protocol/DriverConfiguration.h \
-              $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi40.h \
-              $(WORKSPACE)/MdePkg/Include/Guid/FileInfo.h \
+COMMON_DEPS = $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi51.h \
               $(WORKSPACE)/MdePkg/Include/X64/ProcessorBind.h \
-              $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi51.h \
-              $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi60.h \
-              $(WORKSPACE)/MdePkg/Include/Uefi.h \
-              $(WORKSPACE)/MdePkg/Include/Base.h \
+              $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi50.h \
+              $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi30.h \
+              $(WORKSPACE)/MdePkg/Include/Uefi/UefiGpt.h \
+              $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi10.h \
+              $(WORKSPACE)/MdePkg/Include/Guid/PcAnsi.h \
               $(WORKSPACE)/MdePkg/Include/Protocol/SimpleTextIn.h \
-              $(WORKSPACE)/MdePkg/Include/Uefi/UefiSpec.h \
-              $(WORKSPACE)/MdePkg/Include/Protocol/DriverDiagnostics.h \
-              $(WORKSPACE)/MdePkg/Include/Library/BaseMemoryLib.h \
-              $(WORKSPACE)/MdePkg/Include/Guid/WinCertificate.h \
               $(WORKSPACE)/MdePkg/Include/Guid/HiiFormMapMethodGuid.h \
               $(WORKSPACE)/MdePkg/Include/Protocol/GraphicsOutput.h \
-              $(WORKSPACE)/MdePkg/Include/Library/MemoryAllocationLib.h \
-              $(WORKSPACE)/MdePkg/Include/Protocol/DriverConfiguration2.h \
+              $(WORKSPACE)/MdePkg/Include/Uefi.h \
+              $(WORKSPACE)/MdePkg/Include/IndustryStandard/AcpiAml.h \
               $(WORKSPACE)/MdePkg/Include/Uefi/UefiInternalFormRepresentation.h \
-              $(WORKSPACE)/MdePkg/Include/Protocol/DevicePath.h \
-              $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi10.h \
-              $(WORKSPACE)/MdePkg/Include/Protocol/DriverDiagnostics2.h \
-              $(WORKSPACE)/MdePkg/Include/Library/BaseLib.h \
-              $(WORKSPACE)/MdePkg/Include/Uefi/UefiGpt.h \
+              $(WORKSPACE)/MdePkg/Include/Guid/WinCertificate.h \
+              $(WORKSPACE)/MdePkg/Include/Protocol/SimpleTextInEx.h \
               $(WORKSPACE)/MdePkg/Include/Protocol/DriverBinding.h \
-              $(DEBUG_DIR)/AutoGen.h \
               $(WORKSPACE)/sl_on_uefi/graphic.h \
-              $(WORKSPACE)/MdePkg/Include/Protocol/LoadedImage.h \
-              $(WORKSPACE)/MdePkg/Include/Protocol/SimpleFileSystem.h \
+              $(WORKSPACE)/MdePkg/Include/Uefi/UefiMultiPhase.h \
+              $(WORKSPACE)/MdePkg/Include/IndustryStandard/Bluetooth.h \
+              $(WORKSPACE)/MdePkg/Include/Uefi/UefiSpec.h \
+              $(WORKSPACE)/MdePkg/Include/Protocol/DriverConfiguration2.h \
+              $(WORKSPACE)/MdePkg/Include/Library/BaseLib.h \
+              $(DEBUG_DIR)/AutoGen.h \
+              $(WORKSPACE)/MdePkg/Include/Protocol/DriverConfiguration.h \
+              $(WORKSPACE)/MdePkg/Include/Protocol/DevicePath.h \
+              $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi60.h \
+              $(WORKSPACE)/MdePkg/Include/Base.h \
               $(WORKSPACE)/MdePkg/Include/Uefi/UefiPxe.h \
               $(WORKSPACE)/MdePkg/Include/Protocol/ComponentName.h \
-              $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi20.h \
-              $(WORKSPACE)/MdePkg/Include/Guid/PcAnsi.h \
+              $(WORKSPACE)/MdePkg/Include/Protocol/SimpleTextOut.h \
+              $(WORKSPACE)/MdePkg/Include/Protocol/DriverDiagnostics.h \
+              $(WORKSPACE)/MdePkg/Include/Uefi/UefiBaseType.h \
+              $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi40.h \
               $(WORKSPACE)/MdePkg/Include/Protocol/ComponentName2.h \
-              $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi30.h \
-              $(WORKSPACE)/MdePkg/Include/IndustryStandard/Bluetooth.h \
-              $(WORKSPACE)/MdePkg/Include/Protocol/BlockIo.h \
-              $(WORKSPACE)/MdePkg/Include/IndustryStandard/AcpiAml.h \
-              $(WORKSPACE)/MdePkg/Include/Library/DevicePathLib.h \
+              $(WORKSPACE)/MdePkg/Include/Library/UefiLib.h \
+              $(WORKSPACE)/MdePkg/Include/Protocol/DriverDiagnostics2.h \
+              $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi20.h \
               
 
 #
@@ -280,7 +273,7 @@ FORCE_REBUILD = force_build
 INIT_TARGET = init
 PCH_TARGET =
 BC_TARGET = 
-CODA_TARGET = /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.efi \
+CODA_TARGET = /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.efi \
               
 
 #
@@ -365,70 +358,94 @@ gen_fds:
 # Individual Object Build Targets
 #
 $(DEBUG_DIR)/sl_uefi.efi : $(DEBUG_DIR)/sl_uefi.dll
-	$(CP) /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.dll $(DEBUG_DIR)/$(MODULE_NAME).debug
-	$(OBJCOPY) --strip-unneeded -R .eh_frame /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.dll
-	-$(OBJCOPY) $(OBJCOPY_ADDDEBUGFLAG) /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.dll
+	$(CP) /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.dll $(DEBUG_DIR)/$(MODULE_NAME).debug
+	$(OBJCOPY) --strip-unneeded -R .eh_frame /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.dll
+	-$(OBJCOPY) $(OBJCOPY_ADDDEBUGFLAG) /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.dll
 	-$(CP) $(DEBUG_DIR)/$(MODULE_NAME).debug $(BIN_DIR)/$(MODULE_NAME_GUID).debug
-	"$(GENFW)" -e $(MODULE_TYPE) -o /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.efi /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.dll $(GENFW_FLAGS)
-	$(CP) /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.efi $(OUTPUT_DIR)
-	$(CP) /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.efi $(BIN_DIR)/$(MODULE_NAME_GUID).efi
+	"$(GENFW)" -e $(MODULE_TYPE) -o /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.efi /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.dll $(GENFW_FLAGS)
+	$(CP) /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.efi $(OUTPUT_DIR)
+	$(CP) /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.efi $(BIN_DIR)/$(MODULE_NAME_GUID).efi
 	-$(CP) $(DEBUG_DIR)/*.map $(OUTPUT_DIR)
 
 $(OUTPUT_DIR)/sl_uefi.lib : $(OBJECT_FILES)
 $(OUTPUT_DIR)/sl_uefi.lib : $(OBJECT_FILES_LIST)
-	"$(SLINK)" cr /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/OUTPUT/sl_uefi.lib $(SLINK_FLAGS) @$(OBJECT_FILES_LIST)
+	"$(SLINK)" cr /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/OUTPUT/sl_uefi.lib $(SLINK_FLAGS) @$(OBJECT_FILES_LIST)
 
 $(DEBUG_DIR)/sl_uefi.dll : $(MAKE_FILE)
 $(DEBUG_DIR)/sl_uefi.dll : $(STATIC_LIBRARY_FILES)
 $(DEBUG_DIR)/sl_uefi.dll : $(STATIC_LIBRARY_FILES_LIST)
-	"$(DLINK)" -o /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.dll $(DLINK_FLAGS) -Wl,--start-group,@$(STATIC_LIBRARY_FILES_LIST),--end-group $(CC_FLAGS) $(DLINK2_FLAGS)
-	"$(OBJCOPY)" $(OBJCOPY_FLAGS) /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.dll
-
-$(OUTPUT_DIR)/graphic.obj : $(MAKE_FILE)
-$(OUTPUT_DIR)/graphic.obj : $(COMMON_DEPS)
-$(OUTPUT_DIR)/graphic.obj : $(WORKSPACE)/sl_on_uefi/file_loader.h
-$(OUTPUT_DIR)/graphic.obj : $(WORKSPACE)/sl_on_uefi/graphic.c
-	"$(CC)" $(CC_FLAGS) -c -o /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/OUTPUT/./graphic.obj $(INC) /home/naoki/edk2/sl_on_uefi/graphic.c
+	"$(DLINK)" -o /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.dll $(DLINK_FLAGS) -Wl,--start-group,@$(STATIC_LIBRARY_FILES_LIST),--end-group $(CC_FLAGS) $(DLINK2_FLAGS)
+	"$(OBJCOPY)" $(OBJCOPY_FLAGS) /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/sl_uefi.dll
 
 $(OUTPUT_DIR)/AutoGen.obj : $(MAKE_FILE)
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi51.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/X64/ProcessorBind.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Library/DebugLib.h
 $(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi50.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi30.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Uefi/UefiGpt.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi10.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Guid/PcAnsi.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Protocol/SimpleTextIn.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Guid/HiiFormMapMethodGuid.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Uefi.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/IndustryStandard/AcpiAml.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Library/UefiApplicationEntryPoint.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Uefi/UefiInternalFormRepresentation.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Guid/WinCertificate.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Protocol/SimpleTextInEx.h
 $(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Uefi/UefiMultiPhase.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/IndustryStandard/Bluetooth.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Uefi/UefiSpec.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Library/BaseLib.h
+$(OUTPUT_DIR)/AutoGen.obj : $(DEBUG_DIR)/AutoGen.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Protocol/DevicePath.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi60.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Library/UefiBootServicesTableLib.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Base.h
+$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Uefi/UefiPxe.h
 $(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Protocol/SimpleTextOut.h
 $(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Uefi/UefiBaseType.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Library/UefiBootServicesTableLib.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Protocol/SimpleTextInEx.h
 $(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi40.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/X64/ProcessorBind.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi51.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi60.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Uefi.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Base.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Protocol/SimpleTextIn.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Uefi/UefiSpec.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Guid/WinCertificate.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Guid/HiiFormMapMethodGuid.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Uefi/UefiInternalFormRepresentation.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Protocol/DevicePath.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi10.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Library/BaseLib.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Uefi/UefiGpt.h
-$(OUTPUT_DIR)/AutoGen.obj : $(DEBUG_DIR)/AutoGen.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Library/UefiApplicationEntryPoint.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Library/DebugLib.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Uefi/UefiPxe.h
 $(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi20.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/Guid/PcAnsi.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/IndustryStandard/Acpi30.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/IndustryStandard/Bluetooth.h
-$(OUTPUT_DIR)/AutoGen.obj : $(WORKSPACE)/MdePkg/Include/IndustryStandard/AcpiAml.h
 $(OUTPUT_DIR)/AutoGen.obj : $(DEBUG_DIR)/AutoGen.c
-	"$(CC)" $(CC_FLAGS) -c -o /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/OUTPUT/./AutoGen.obj $(INC) /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/AutoGen.c
+	"$(CC)" $(CC_FLAGS) -c -o /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/OUTPUT/./AutoGen.obj $(INC) /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/DEBUG/AutoGen.c
 
 $(OUTPUT_DIR)/sl_uefi.obj : $(MAKE_FILE)
 $(OUTPUT_DIR)/sl_uefi.obj : $(COMMON_DEPS)
+$(OUTPUT_DIR)/sl_uefi.obj : $(WORKSPACE)/MdePkg/Include/Library/MemoryAllocationLib.h
+$(OUTPUT_DIR)/sl_uefi.obj : $(WORKSPACE)/MdePkg/Include/Guid/FileInfo.h
+$(OUTPUT_DIR)/sl_uefi.obj : $(WORKSPACE)/MdePkg/Include/Protocol/BlockIo.h
+$(OUTPUT_DIR)/sl_uefi.obj : $(WORKSPACE)/MdePkg/Include/Library/DevicePathLib.h
+$(OUTPUT_DIR)/sl_uefi.obj : $(WORKSPACE)/MdePkg/Include/Protocol/LoadedImage.h
+$(OUTPUT_DIR)/sl_uefi.obj : $(WORKSPACE)/MdePkg/Include/Library/UefiBootServicesTableLib.h
+$(OUTPUT_DIR)/sl_uefi.obj : $(WORKSPACE)/MdePkg/Include/Library/BaseMemoryLib.h
 $(OUTPUT_DIR)/sl_uefi.obj : $(WORKSPACE)/MdePkg/Include/Guid/Acpi.h
+$(OUTPUT_DIR)/sl_uefi.obj : $(WORKSPACE)/MdePkg/Include/Protocol/SimpleFileSystem.h
+$(OUTPUT_DIR)/sl_uefi.obj : $(WORKSPACE)/sl_on_uefi/font.h
 $(OUTPUT_DIR)/sl_uefi.obj : $(WORKSPACE)/sl_on_uefi/sl_uefi.c
-	"$(CC)" $(CC_FLAGS) -c -o /home/naoki/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/OUTPUT/./sl_uefi.obj $(INC) /home/naoki/edk2/sl_on_uefi/sl_uefi.c
+	"$(CC)" $(CC_FLAGS) -c -o /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/OUTPUT/./sl_uefi.obj $(INC) /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/sl_uefi.c
+
+$(OUTPUT_DIR)/font.obj : $(MAKE_FILE)
+$(OUTPUT_DIR)/font.obj : $(COMMON_DEPS)
+$(OUTPUT_DIR)/font.obj : $(WORKSPACE)/sl_on_uefi/font_bin.h
+$(OUTPUT_DIR)/font.obj : $(WORKSPACE)/sl_on_uefi/font.h
+$(OUTPUT_DIR)/font.obj : $(WORKSPACE)/sl_on_uefi/font.c
+	"$(CC)" $(CC_FLAGS) -c -o /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/OUTPUT/./font.obj $(INC) /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/font.c
+
+$(OUTPUT_DIR)/graphic.obj : $(MAKE_FILE)
+$(OUTPUT_DIR)/graphic.obj : $(COMMON_DEPS)
+$(OUTPUT_DIR)/graphic.obj : $(WORKSPACE)/MdePkg/Include/Library/MemoryAllocationLib.h
+$(OUTPUT_DIR)/graphic.obj : $(WORKSPACE)/MdePkg/Include/Guid/FileInfo.h
+$(OUTPUT_DIR)/graphic.obj : $(WORKSPACE)/MdePkg/Include/Protocol/BlockIo.h
+$(OUTPUT_DIR)/graphic.obj : $(WORKSPACE)/MdePkg/Include/Library/DevicePathLib.h
+$(OUTPUT_DIR)/graphic.obj : $(WORKSPACE)/MdePkg/Include/Protocol/LoadedImage.h
+$(OUTPUT_DIR)/graphic.obj : $(WORKSPACE)/MdePkg/Include/Library/UefiBootServicesTableLib.h
+$(OUTPUT_DIR)/graphic.obj : $(WORKSPACE)/MdePkg/Include/Library/BaseMemoryLib.h
+$(OUTPUT_DIR)/graphic.obj : $(WORKSPACE)/MdePkg/Include/Protocol/SimpleFileSystem.h
+$(OUTPUT_DIR)/graphic.obj : $(WORKSPACE)/sl_on_uefi/file_loader.h
+$(OUTPUT_DIR)/graphic.obj : $(WORKSPACE)/sl_on_uefi/graphic.c
+	"$(CC)" $(CC_FLAGS) -c -o /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/build/DEBUG_GCC5/X64/sl_on_uefi/sl_uefi/OUTPUT/./graphic.obj $(INC) /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/graphic.c
 
 
 

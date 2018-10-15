@@ -62,6 +62,7 @@ EFI_STATUS GetGraphicMode(
 
         UINT32 H = GraphicModeInfo->HorizontalResolution;
         UINT32 V = GraphicModeInfo->VerticalResolution;
+//        Print(L"%dx%d\n",H,V);
         FreePool(GraphicModeInfo);
 
         // Allow modes 16:9 or 4:3 only
@@ -155,3 +156,17 @@ void graphic_draw_pixel(UINTN x,UINTN y,EFI_PHYSICAL_ADDRESS bmp_addr,struct gra
   CopyMem((VOID *)addr,(VOID *)bmp_addr,3);
 }
 
+void graphic_draw_pixel_array(UINTN x,UINTN y,UINT8 *array,struct graphic_config *graphic_config){
+  EFI_PHYSICAL_ADDRESS addr = (y*graphic_config->pixels_per_scan_line + x)*sizeof(struct graphic_pixel)+graphic_config->frame_base;
+  UINT8 *mem_array = (UINT8 *)addr;
+  mem_array[0] = array[0];
+  mem_array[1] = array[1];
+  mem_array[2] = array[2];
+}
+
+void graphic_draw_white(UINTN x,UINTN y,struct graphic_config *graphic_config){
+  UINT8 *addr = (UINT8 *)((y*graphic_config->pixels_per_scan_line + x)*sizeof(struct graphic_pixel)+graphic_config->frame_base);
+  addr[0] = 0xFF;
+  addr[1] = 0xFF;
+  addr[2] = 0xFF;
+}
