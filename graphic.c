@@ -170,3 +170,9 @@ void graphic_draw_white(UINTN x,UINTN y,struct graphic_config *graphic_config){
   addr[1] = 0xFF;
   addr[2] = 0xFF;
 }
+void graphic_draw_font(UINTN x,UINTN y,struct graphic_config *graphic_config){
+  UINT8 *addr = (UINT8 *)((y*graphic_config->pixels_per_scan_line + x)*sizeof(struct graphic_pixel)+graphic_config->frame_base);
+  addr[0] = 0xFF;
+  addr[1] = 0xFF;
+  addr[2] = 0xFF;
+}

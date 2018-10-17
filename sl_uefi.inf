@@ -10,9 +10,12 @@
   sl_uefi.c
   graphic.c
   font.c
+  console.c
+  timer.c
 
 [Packages]
   MdePkg/MdePkg.dec
+  StdLib/StdLib.dec
 
 [LibraryClasses]
   UefiLib
@@ -21,6 +24,7 @@
   gEfiSimpleFileSystemProtocolGuid
   gEfiBlockIoProtocolGuid
   gEfiLoadedImageProtocolGuid
+  gEfiSimpleTextInProtocolGuid
 [Guids]
   gEfiFileInfoGuid
   gEfiAcpiTableGuid

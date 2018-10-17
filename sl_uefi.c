@@ -4,13 +4,15 @@
 #include  <Protocol/BlockIo.h>
 #include  <Protocol/LoadedImage.h>
 #include  <Protocol/SimpleFileSystem.h>
+#include <Protocol/SimpleTextIn.h>
 #include  <Library/DevicePathLib.h>
 #include  <Guid/FileInfo.h>
-#include  <Guid/Acpi.h>
 #include  <Library/MemoryAllocationLib.h>
 #include  <Library/BaseMemoryLib.h>
 #include "graphic.h"
 #include "font.h"
+#include "console.h"
+#include "timer.h"
 
 EFI_STATUS
 EFIAPI
@@ -24,14 +26,30 @@ UefiMain (
 //  Print(L"Getting Graphic Node\n");
   GetGraphicMode(ImageHandle,&conf);
 
-  graphic_draw_white(10,10,&conf);
-  graphic_draw_white(11,10,&conf);
-  graphic_draw_white(12,10,&conf);
-  graphic_draw_white(13,10,&conf);
-  for(UINTN i=0;i<48;i++){
-    font_render(20+i*15,20,0x21+i,&conf);
+  console_init(&conf);
+  console_puts("ABCDEFGHIJKLMNOPQRSTUVWXYZ\n");
+  console_puts("abcdefghijklmnopqrstuvwxyz\n");
+
+  EFI_STATUS Status;
+  EFI_SIMPLE_TEXT_INPUT_PROTOCOL *input;
+  Status = gBS->LocateProtocol(
+      &gEfiSimpleTextInProtocolGuid,
+      NULL,
+      (VOID **)&input);
+  if(EFI_ERROR(Status)){
+    Print(L"Failed to Locate Simple Text Output Protocol\n");
+    return Status;
   }
+  UINTN index;
+  EFI_INPUT_KEY key;
   while(1){
-    asm("hlt");
+    gBS->WaitForEvent(1,&(input->WaitForKey),&index);
+    input->ReadKeyStroke(input,&key);
+    if(key.UnicodeChar == 0xD){
+      console_puts("\n");
+    }else{
+      console_putc(key.UnicodeChar);
+    }
   };
+  asm("hlt");
 }

@@ -1,3 +1,0 @@
-gCommandLineDefines: {'ARCH': 'X64'}
-BuildOptionPcd: []
-Active Platform: /home/naoki/Nextcloud/sl_on_uefi/edk2/sl_on_uefi/sl_on_uefi.dsc
