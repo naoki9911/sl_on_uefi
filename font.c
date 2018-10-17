@@ -11,6 +11,7 @@ void font_render(UINTN x,UINTN y,UINTN code,struct graphic_config *graphic_confi
       if(bin&1){
         graphic_draw_font(x+j,y+i,graphic_config);
       }else{
+        graphic_draw_black(x+j,y+i,graphic_config);
       }
       bin = bin >> 1;
     }

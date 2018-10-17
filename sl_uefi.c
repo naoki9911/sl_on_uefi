@@ -13,6 +13,7 @@
 #include "font.h"
 #include "console.h"
 #include "timer.h"
+#include "sh.h"
 
 EFI_STATUS
 EFIAPI
@@ -27,8 +28,11 @@ UefiMain (
   GetGraphicMode(ImageHandle,&conf);
 
   console_init(&conf);
+  console_clear();
   console_puts("ABCDEFGHIJKLMNOPQRSTUVWXYZ\n");
   console_puts("abcdefghijklmnopqrstuvwxyz\n");
+  sh_init(&conf);
+  sh_cmd();
 
   EFI_STATUS Status;
   EFI_SIMPLE_TEXT_INPUT_PROTOCOL *input;

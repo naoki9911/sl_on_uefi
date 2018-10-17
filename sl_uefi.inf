@@ -12,6 +12,7 @@
   font.c
   console.c
   timer.c
+  sh.c
 
 [Packages]
   MdePkg/MdePkg.dec

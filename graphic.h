@@ -46,5 +46,6 @@ void graphic_draw_pixel(UINTN x,UINTN y,UINTN bmp_addr,struct graphic_config *gr
 void graphic_draw_pixel_array(UINTN x,UINTN y,UINT8 *array,struct graphic_config *graphic_config);
 void graphic_draw_white(UINTN x,UINTN y,struct graphic_config *graphic_config);
 void graphic_draw_font(UINTN x,UINTN y,struct graphic_config *graphic_config);
+void graphic_draw_black(UINTN x,UINTN y,struct graphic_config *graphic_config);
 #endif
 
