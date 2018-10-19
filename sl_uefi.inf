@@ -13,6 +13,7 @@
   console.c
   timer.c
   sh.c
+  sl.c
 
 [Packages]
   MdePkg/MdePkg.dec

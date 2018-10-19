@@ -66,3 +66,23 @@ void console_cursor_enable(){
 void console_cursor_clear(){
 
 }
+
+void console_free_put(UINTN x,UINTN y, char c){
+  font_render(x,y,c,&conf);
+}
+
+void console_free_puts(UINTN x,UINTN y,char *string){
+  int i = 0;
+  while(string[i]&&(x+i*FONT_X <= cursor_x*FONT_X)){
+    console_free_put(x+i*FONT_X,y*FONT_Y,string[i]);
+    i++;
+  }
+}
+
+UINTN console_get_cursor_x(){
+  return cursor_x;
+}
+
+UINTN console_get_cursor_y(){
+  return cursor_y;
+}

@@ -14,6 +14,7 @@
 #include "console.h"
 #include "timer.h"
 #include "sh.h"
+#include "sl.h"
 
 EFI_STATUS
 EFIAPI

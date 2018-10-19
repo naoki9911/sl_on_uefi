@@ -1,10 +1,15 @@
-#include  <Uefi.h>
-#include  <Library/UefiLib.h>
-#include  <Library/UefiBootServicesTableLib.h>
+#include <Uefi.h>
+#include <Library/UefiLib.h>
+#include <Library/UefiBootServicesTableLib.h>
 #include <Protocol/SimpleTextIn.h>
+#include <Library/BaseMemoryLib.h>
 #include "sh.h"
 #include "console.h"
 #include "graphic.h"
+#include "sl.h"
+
+char buf[128]={0};
+int buf_index=0;
 
 void sh_init(struct graphic_config *conf){
   console_init(conf);
@@ -30,9 +35,34 @@ EFI_STATUS sh_cmd(){
     gBS->WaitForEvent(1,&(input->WaitForKey),&index);
     input->ReadKeyStroke(input,&key);
     if(key.UnicodeChar == 0xD){
-      console_puts("\n>");
+      console_putc('\n');
+      sh_parse();
+      SetMem((VOID *)buf,128,0);
+      buf_index=0;
+      console_putc('>');
     }else{
       console_putc(key.UnicodeChar);
+      buf[buf_index] = key.UnicodeChar;
+      buf_index++;
     }
   }
+}
+
+void sh_parse(){
+  if(sh_cmdcmp((const char*)buf,"sl")){
+    sl();
+  }
+  console_putc('\n');
+}
+
+int sh_cmdcmp(const char* s1,const char* s2){
+  int i=0;
+  while(s1[i]&&s2[i]){
+    if(s1[i] == s2[i]){
+      i++;
+    }else{
+      return 0;
+    }
+  }
+  return 1;
 }
